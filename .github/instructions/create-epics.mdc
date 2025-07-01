@@ -1,0 +1,56 @@
+---
+description: Assists in drafting Epics for a project phase (e.g., v1, v2)
+globs:
+alwaysApply: false
+---
+# Rule: Generating Epics from Business Requirements
+
+## Goal
+
+To guide an AI assistant in transforming clear business requirements into actionable Epics organized by project phase (e.g., v1, v2, v3). The output should align with business value, be time-estimable, and usable by product managers and engineering teams for planning.
+
+## Process
+
+1. **Receive Initial Input:** The user provides a high-level description of the project or a list of business goals.
+2. **Ask Clarifying Questions:** Before generating epics, the AI *must* elicit enough detail to extract scope boundaries, priorities, constraints, dependencies, and success definitions. Questions should be listed as lettered/numbered options for easy user response.
+3. **Generate Epics:** Based on the refined input, group related features into Epics under a specific version or milestone.
+4. **Estimate & Attribute:** Provide rough effort estimates and assign domain/stakeholders for each epic.
+5. **Save Output:** Save the generated document as `epics-[project-name].md` inside the `/tasks` directory.
+
+## Clarifying Questions (Examples)
+
+Tailor questions to user input. Prioritize:
+
+* **Business Context:** "What business initiative or strategic goal is this phase aligned with?"
+* **Phase/Milestone Scope:** "What defines the completion of v1/v2/etc.?"
+* **Functionality Themes:** "What major workflows or functional areas must be covered in this version?"
+* **Priority Areas:** "Which features or themes are highest priority for this phase?"
+* **Time Constraints:** "Are there deadlines or external constraints driving this timeline?"
+* **Dependencies:** "Are there any tech or team dependencies we must factor in?"
+* **Risks/Unknowns:** "Any uncertainties or assumptions we should track?"
+* **Ownership:** "Who will be responsible for each domain or area?"
+
+## Epic Output Structure
+
+Each epic should follow this format:
+
+- **Title:** Clear and concise (e.g., "User Onboarding Flow")
+- **Phase:** v1, v2, etc.
+- **Description:** One paragraph summarizing the purpose and impact
+- **User Stories (Optional):** Bullet list of associated user stories
+- **Estimated Effort:** Small / Medium / Large / XL (or T-shirt sizing, or time range if specified)
+- **Owner / Stakeholder:** Name, team, or role responsible
+- **Dependencies:** Any pre-requisites or blocking issues
+- **Risks/Assumptions:** Known uncertainties influencing feasibility or scope
+
+## Output
+
+- **Format:** Markdown (`.md`)
+- **Location:** `/tasks/`
+- **Filename:** `epics-[project-name].md`
+
+## Final Instructions
+
+1. Do NOT begin epic generation until clarifying questions are answered.
+2. Ensure each epic aligns with business value and version milestone.
+3. Keep output usable for product planning and sprint estimation.
