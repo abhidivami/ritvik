@@ -85,3 +85,7 @@ serve-docs: docs ## serve the documentation with mkdocs
 
 export:
 	nbdev_export
+
+dummy-endpoint:
+	uvicorn src.ritvik.dummy-endpoint.main:app --host 0.0.0.0 --port 8002 &
+	ngrok http 8002

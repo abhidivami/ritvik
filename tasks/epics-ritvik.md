@@ -99,3 +99,19 @@
 - **Owner / Stakeholder:** Abhilash (Backend)
 - **Dependencies:** Epic 4 (Backend & API)
 - **Risks/Assumptions:** The PostgreSQL instance is available and accessible from the backend service.
+
+---
+
+## Epic 7: Task Listing
+
+- **Title:** Task Listing
+- **Phase:** v1
+- **Description:** This epic will provide users with the ability to see their tasks. It will introduce two new commands: `/mytasks` to see tasks assigned to them, and `/assignedtasks` to see tasks they have assigned to others.
+- **User Stories:**
+  - As a user, I want to be able to type `/mytasks` to see a list of tasks assigned to me.
+  - As a user, I want to be able to type `/assignedtasks` to see a list of tasks that I have assigned to others.
+  - As a developer, I need to create API endpoints to fetch tasks based on the assignee and the assigner.
+- **Estimated Effort:** Medium
+- **Owner / Stakeholder:** Abhilash (Backend), Harshit (Google Chat Integration)
+- **Dependencies:** Epic 4 (Backend & API with Excel Data Store)
+- **Risks/Assumptions:** The format for displaying the list of tasks in Google Chat is clear.
