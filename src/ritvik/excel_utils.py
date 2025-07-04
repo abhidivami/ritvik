@@ -45,24 +45,25 @@ def list_tasks(asignee: Optional[str] = None) -> List[Task]:
             continue
         # Old schema: 7 columns (no task_name, task_description)
         if len(row) == 7:
-            asigner, asignee, request_date, task_legacy, deadline, status, task_id = row
+            asigner, row_asignee, request_date, task_legacy, deadline, status, task_id = row
             task_name = task_legacy or "(no name)"
             task_description = task_legacy or "(no description)"
         # New schema: 8 columns
         elif len(row) == 8:
-            asigner, asignee, request_date, task_name, task_description, deadline, status, task_id = row
+            asigner, row_asignee, request_date, task_name, task_description, deadline, status, task_id = row
         else:
             print(f"Skipping row with unexpected column count: {row}")
             continue
         # Skip if required fields are missing
-        if any(x is None or str(x).strip() == "" for x in [asigner, asignee, request_date, task_name, task_description, deadline, status, task_id]):
+        if any(x is None or str(x).strip() == "" for x in [asigner, row_asignee, request_date, task_name, task_description, deadline, status, task_id]):
             continue
-        if asignee and asignee != asignee:
+        # Only include tasks for the given assignee if specified
+        if asignee and row_asignee != asignee:
             continue
         try:
             task = Task(
                 asigner=asigner,
-                asignee=asignee,
+                asignee=row_asignee,
                 request_date=datetime.fromisoformat(request_date),
                 task_name=task_name,
                 task_description=task_description,
